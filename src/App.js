@@ -10,14 +10,15 @@ import ModalDiv from "./components/ModalDiv";
 
 function App() {
   const [showModal, setShowModal] = useState(false);
+  const [productList, setProductList] = useState([]);
   return (
     <Router>
       <ModalDiv showModal={showModal} setShowModal={setShowModal} />
       <div className="App">
-        <SearchBar />
+        <SearchBar setProductList={setProductList} />
         <Product setShowModal={setShowModal} />
         <div className="container">
-          <ProductList />
+          <ProductList productList={productList} />
           <div>
             <ProductDetails />
           </div>

@@ -1,9 +1,21 @@
 import React from "react";
+import { useState, useEffect, useRef } from "react";
 
-const SearchBar = () => {
+const SearchBar = (props) => {
+  const [search, setSearch] = useState("");
+
+  const handleChange = (event) => {
+    setSearch(event.target.value);
+    props.setProductList(search);
+  };
+
   return (
     <div className="header">
-      <input className="search-button" placeholder="Buscar por um Produto" />
+      <input
+        onChange={handleChange}
+        className="search-button"
+        placeholder="Buscar por um Produto"
+      />
     </div>
   );
 };

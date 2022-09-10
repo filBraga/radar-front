@@ -40,7 +40,7 @@ const ModalDiv = (props) => {
           onChange={(e) => setValor(e.target.value)}
         />
 
-        <input
+        <textarea
           style={{ height: "100px", width: "400px", fontSize: "14pt" }}
           placeholder="Descricao"
           onChange={(e) => setDescricao(e.target.value)}
