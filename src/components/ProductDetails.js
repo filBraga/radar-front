@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 const ProductDetails = () => {
   return (
     <div>
-      <h5>product Details</h5>
+      <h5>Detalhes</h5>
       <Routes>
         <Route path="/" element={<SelectAnItem />} />
         <Route path="/:id" element={<ProductDetailsId />} />

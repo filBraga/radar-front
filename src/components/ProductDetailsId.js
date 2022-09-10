@@ -19,15 +19,38 @@ const ProductDetailsId = () => {
     fetchData();
   }, [id]);
 
+  const handleDeleteClick = () => {
+    async function fetchData() {
+      console.log("Deleting");
+      // You can await here
+      fetch(`http://localhost:9000/product/${id}`, {
+        method: "DELETE",
+      });
+      // .then((response) => response.json())
+      // .then((response) => setApiResponse(response))
+      // .then((response) => console.log(response));
+      // ...
+    }
+    fetchData();
+  };
+
   return (
-    <div>
-      <div className="rowC">
-        <h5>ID: {apiResponse._id}</h5>
-        <h5>produto: {apiResponse.produto}</h5>
-        <h5>descricao: {apiResponse.descricao}</h5>
-        <h5>valor: {apiResponse.valor}</h5>
+    <div className="details-div">
+      <div>
+        <h3>{apiResponse.produto}</h3>
+        <div className="thin-margin">
+          <h3>Valor</h3>
+          <p> R$ {apiResponse.valor}</p>
+        </div>
+        <p>{apiResponse.descricao}</p>
       </div>
-      <button className="new-client-button">Editar</button>
+      <button className="button-new-product">Editar</button>
+      <button
+        className="button-new-product"
+        onClick={() => handleDeleteClick()}
+      >
+        Deletar
+      </button>
     </div>
   );
 };

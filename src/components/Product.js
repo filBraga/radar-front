@@ -1,11 +1,19 @@
 import React from "react";
+import ButtonNewProduct from "./ButtonNewProduct";
+import "../App.css";
 
-const Product = () => {
+const Product = (props) => {
   return (
     <div>
-      <div className="container">
-        <h6> Productos</h6>
-        <button> + </button>
+      <div className="container-header">
+        <h5> Productos</h5>
+        <ButtonNewProduct
+          onClick={() => {
+            props.setShowModal(true);
+          }}
+        >
+          +
+        </ButtonNewProduct>
       </div>
       <hr className="horizontal-rule" />
     </div>
