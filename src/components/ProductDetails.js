@@ -1,15 +1,18 @@
 import React from "react";
 import SelectAnItem from "./SelectAnItem";
 import ProductDetailsId from "./ProductDetailsId";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-const ProductDetails = () => {
+const ProductDetails = (props) => {
   return (
     <div>
       <p className="product">Detalhes</p>
       <Routes>
         <Route path="/" element={<SelectAnItem />} />
-        <Route path="/:id" element={<ProductDetailsId />} />
+        <Route
+          path="/:id"
+          element={<ProductDetailsId productState={props.productState} />}
+        />
       </Routes>
     </div>
   );

@@ -5,8 +5,7 @@ const SearchBar = (props) => {
   const [search, setSearch] = useState("");
 
   const handleChange = (event) => {
-    setSearch(event.target.value);
-    props.setProductList(search);
+    props.searchStringState[1](event.target.value);
   };
 
   return (

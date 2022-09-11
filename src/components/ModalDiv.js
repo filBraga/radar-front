@@ -7,16 +7,20 @@ const ModalDiv = (props) => {
   const [produto, setProduto] = useState();
   const [valor, setValor] = useState();
   const [descricao, setDescricao] = useState();
+  const [productState, setProductState] = props.productState;
 
   const handleClick = async () => {
-    await fetch("http://localhost:9000/product", {
+    fetch("http://localhost:9000/product", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       mode: "cors",
       body: JSON.stringify({ produto, valor, descricao }), // body data type must match "Content-Type" header
-    });
-
-    props.setShowModal(false);
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        setProductState((prev) => [...prev, response]);
+        props.setShowModal(false);
+      });
   };
 
   return (

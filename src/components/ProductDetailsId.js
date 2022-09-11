@@ -1,8 +1,8 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
-const ProductDetailsId = () => {
+const ProductDetailsId = (props) => {
   let { id } = useParams();
   const navigate = useNavigate();
 
@@ -12,6 +12,8 @@ const ProductDetailsId = () => {
   const [produto, setProduto] = useState();
   const [valor, setValor] = useState();
   const [descricao, setDescricao] = useState();
+
+  const [productState, setProductState] = props.productState;
 
   const toHomepage = () => {
     navigate("/");
@@ -36,6 +38,11 @@ const ProductDetailsId = () => {
         method: "DELETE",
       });
     }
+    setProductState((prev) =>
+      prev.filter((product) => {
+        return product._id !== id;
+      })
+    );
     fetchDataDelete();
     toHomepage();
   };
@@ -62,6 +69,7 @@ const ProductDetailsId = () => {
       });
     }
     fetchDataSave();
+    toHomepage();
     setIsEditing(false);
   };
 
