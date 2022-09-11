@@ -14,14 +14,18 @@ function App() {
   const filteredProductState = useState([]);
   const searchStringState = useState("");
 
+  const refresh = useState(false);
+
   useEffect(() => {
-    fetch(`http://localhost:9000/product`)
+    fetch(`http://radarfit-back.herokuapp.com/product`)
       .then((response) => response.json())
       .then((response) => productState[1](response));
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:9000/product/find/${searchStringState[0]}`)
+    fetch(
+      `http://radarfit-back.herokuapp.com/product/find/${searchStringState[0]}`
+    )
       .then((response) => response.json())
       .then((response) => filteredProductState[1](response));
   }, [searchStringState[0]]);
@@ -43,7 +47,7 @@ function App() {
             filteredProductState={filteredProductState}
           />
           <div>
-            <ProductDetails productState={productState} />
+            <ProductDetails refresh={refresh} productState={productState} />
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ const ModalDiv = (props) => {
   const [productState, setProductState] = props.productState;
 
   const handleClick = async () => {
-    fetch("http://localhost:9000/product", {
+    fetch("http://radarfit-back.herokuapp.com/product", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       mode: "cors",

@@ -20,7 +20,7 @@ const ProductDetailsId = (props) => {
   };
 
   async function fetchData() {
-    await fetch(`http://localhost:9000/product/${id}`)
+    await fetch(`http://radarfit-back.herokuapp.com/product/${id}`)
       .then((response) => response.json())
       .then((response) => setApiResponse(response))
       .then((response) => console.log(response));
@@ -34,7 +34,7 @@ const ProductDetailsId = (props) => {
     async function fetchDataDelete() {
       console.log("Deleting");
       // You can await here
-      fetch(`http://localhost:9000/product/${id}`, {
+      fetch(`http://radarfit-back.herokuapp.com/product/${id}`, {
         method: "DELETE",
       });
     }
@@ -56,7 +56,7 @@ const ProductDetailsId = (props) => {
     async function fetchDataSave() {
       console.log("Patching");
       // You can await here
-      fetch(`http://localhost:9000/product/${id}`, {
+      fetch(`http://radarfit-back.herokuapp.com/product/${id}`, {
         method: "PATCH",
         body: JSON.stringify({
           produto,
@@ -68,7 +68,8 @@ const ProductDetailsId = (props) => {
         },
       });
     }
-    fetchDataSave();
+    const returnedValue = fetchDataSave();
+    console.log(returnedValue);
     toHomepage();
     setIsEditing(false);
   };
